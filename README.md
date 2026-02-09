@@ -1,126 +1,104 @@
-# Face-Mask-Detection-using-CNN
+# Face Mask Detection using Convolutional Neural Networks
 
-Overview
+## Overview
 
-This project implements a Convolutional Neural Network (CNN) to classify images as with mask or without mask. The model is trained on a labeled image dataset and demonstrates strong performance in face mask detection tasks.
+This project implements a **Convolutional Neural Network (CNN)** to classify images as **with mask** or **without mask**. The model is trained on a labeled image dataset and demonstrates strong performance in face mask detection tasks.
 
-Dataset
+## Dataset
 
-The dataset used is the Face Mask Dataset from Kaggle.
+The dataset used is the **Face Mask Dataset** from Kaggle.
 
-Source: omkargurav/face-mask-dataset
+* **Source**: `omkargurav/face-mask-dataset`
+* **Classes**:
 
-Classes:
+  * `with_mask`
+  * `without_mask`
 
-with_mask
+## Tech Stack
 
-without_mask
+* Python
+* TensorFlow, Keras
+* NumPy
+* OpenCV
+* Scikit-learn
+* Matplotlib
+* Pillow
 
-Tech Stack
+## Methodology
 
-Python
+### Data Preprocessing
 
-TensorFlow, Keras
+* Images are loaded from both classes and resized to **128 × 128** pixels.
+* Images are converted to RGB format.
+* Pixel values are normalized to the range **[0, 1]**.
+* Labels are assigned (`1` for mask, `0` for no mask).
+* Dataset is split into **80% training** and **20% testing** data.
 
-NumPy
+### Model Architecture
 
-OpenCV
+The CNN is built using the **Keras Sequential API** and includes:
 
-Scikit-learn
+* Convolutional layers with ReLU activation
+* Max pooling layers for feature reduction
+* Fully connected dense layers
+* Dropout layers to reduce overfitting
+* Sigmoid-activated output layer for binary classification
 
-Matplotlib
+### Training
 
-Pillow
+* **Optimizer**: Adam
+* **Loss Function**: Sparse Categorical Crossentropy
+* **Metric**: Accuracy
+* **Epochs**: 5
 
-Methodology
-Data Preprocessing
+## Results
 
-Images are loaded from both classes and resized to 128 × 128 pixels.
+* The model achieves a **test accuracy of approximately 92%**.
+* Training and validation accuracy and loss are visualized to evaluate model performance.
 
-Images are converted to RGB format.
+## How to Run the Project
 
-Pixel values are normalized to the range [0, 1].
+1. **Clone the repository**
 
-Labels are assigned (1 for mask, 0 for no mask).
+   ```bash
+   git clone https://github.com/your-username/face-mask-detection-cnn.git
+   cd face-mask-detection-cnn
+   ```
 
-Dataset is split into 80% training and 20% testing data.
+2. **Install dependencies**
 
-Model Architecture
+   ```bash
+   pip install numpy matplotlib opencv-python pillow scikit-learn tensorflow keras kaggle
+   ```
 
-The CNN is built using the Keras Sequential API and includes:
+3. **Download the dataset**
 
-Convolutional layers with ReLU activation
+   * Download the dataset from Kaggle: `omkargurav/face-mask-dataset`
+   * Extract it into the project directory maintaining the folder structure:
 
-Max pooling layers for feature reduction
+     ```
+     dataset/
+       ├── with_mask/
+       └── without_mask/
+     ```
 
-Fully connected dense layers
+4. **Run the notebook or script**
 
-Dropout layers to reduce overfitting
+   * Train the CNN model
+   * Evaluate performance on test data
+   * Save the trained model (optional)
 
-Sigmoid-activated output layer for binary classification
-
-Training
-
-Optimizer: Adam
-
-Loss Function: Sparse Categorical Crossentropy
-
-Metric: Accuracy
-
-Epochs: 5
-
-Results
-
-The model achieves a test accuracy of approximately 92%.
-
-Training and validation accuracy and loss are visualized to evaluate model performance.
-
-How to Run the Project
-
-Clone the repository
-
-git clone https://github.com/your-username/face-mask-detection-cnn.git
-cd face-mask-detection-cnn
-
-
-Install dependencies
-
-pip install numpy matplotlib opencv-python pillow scikit-learn tensorflow keras kaggle
-
-
-Download the dataset
-
-Download the dataset from Kaggle: omkargurav/face-mask-dataset
-
-Extract it into the project directory maintaining the folder structure:
-
-dataset/
-  ├── with_mask/
-  └── without_mask/
-
-
-Run the notebook or script
-
-Train the CNN model
-
-Evaluate performance on test data
-
-Save the trained model (optional)
-
-Prediction
+## Prediction
 
 To predict on a new image:
 
-Load and resize the image to 128 × 128
+1. Load and resize the image to **128 × 128**
+2. Normalize pixel values
+3. Reshape the image to match the model input
+4. Use `model.predict()` to classify the image
 
-Normalize pixel values
+The output indicates whether the person is **wearing a mask** or **not wearing a mask**.
 
-Reshape the image to match the model input
+## Conclusion
 
-Use model.predict() to classify the image
-
-The output indicates whether the person is wearing a mask or not wearing a mask.
-
-Conclusion
-
-This project demonstrates the application of Convolutional Neural Networks for image classification and serves as a strong foundation for real-world computer vision tasks such as public safety monitoring and real-time detection systems.
+This project demonstrates the application of **Convolutional Neural Networks** for image classification and serves as a strong foundation for real-world computer vision tasks such as public safety monitoring and real-time detection systems.
